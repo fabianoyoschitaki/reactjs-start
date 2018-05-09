@@ -5,3 +5,12 @@ npm install --save react react-dom
 
 # instalar apenas para desenvolvimento
 npm install --save-dev webpack
+
+# instalar babel se não webpack não funciona
+npm install --save-dev babel-core babel-loader babel-preset-react
+
+# instalar webpack globalmente
+npm install webpack -g
+
+# então pode rodar webpack na pasta e ficar escutando sem precisar webpack toda hora
+webpack -w 
