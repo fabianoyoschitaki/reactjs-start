@@ -1,0 +1,28 @@
+https://reactjs.org/
+https://jscasts.teachable.com/p/comecando-com-react-js
+https://egghead.io/
+https://tylermcginnis.com/
+https://reacttraining.com/
+https://medium.com/reactbrasil
+
+1. Make sure you have a recent version of Node.js installed. 
+node --version
+
+2. Follow the installation instructions to create a new project.
+	npm install -g create-react-app
+	create-react-app my-react-app
+	cd my-react-app
+	npm start
+
+	.npmrc
+	*****
+	proxy=http://F0113091:8vkikww8@prxwg:3128
+	http-proxy=http://F0113091:8vkikww8@prxwg:3128
+	https-proxy=http://F0113091:8vkikww8@prxwg:3128
+	
+When you’re ready to deploy to production, running npm run build will create an optimized build of your app in the build folder. 
+You can learn more about Create React App from its README and the User Guide.
+
+3. Delete all files in the src/ folder of the new project (don’t delete the folder, just its contents).
+	cd my-react-app
+	rm -f src/*	

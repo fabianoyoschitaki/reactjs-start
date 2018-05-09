@@ -1,0 +1,7 @@
+npm init (criar o package.json)
+
+# instalar o react
+npm install --save react react-dom 
+
+# instalar apenas para desenvolvimento
+npm install --save-dev webpack
