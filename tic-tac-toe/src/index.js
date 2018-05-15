@@ -166,7 +166,7 @@ class SusepAssociada extends React.Component {
     }
     
     loadSusepData() {
-        $.get("http://localhost:8080/susepsassociadas",
+        $.get("http://172.19.14.187:8080/susepsassociadas",
             function (retorno) {
                 console.log("Chamou serviço suseps. Tamanho retorno: " + retorno["susepAssociada"].length);
                 this.setState({ data: retorno["susepAssociada"] });
@@ -202,8 +202,9 @@ class SusepList extends React.Component {
 
 // ========================================
 ReactDOM.render(
-    <Game />, document.getElementById('root')
+    <Game />, document.getElementById('game')
 );
+
 ReactDOM.render(
     <SusepAssociada />, document.getElementById('suseps')
 );
