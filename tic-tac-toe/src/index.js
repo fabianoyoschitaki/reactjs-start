@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import $ from 'jquery';
 import './index.css'
 
 /* class Square extends React.Component {
@@ -55,6 +56,27 @@ class Board extends React.Component {
     }
 }
 
+/** class SusepsAssociadas extends React.Component {
+    getInitialState() {
+        return { text: '' };    
+    }
+    
+    componentDidMount() {
+        setInterval(this.callService.bind(this), 5000);
+    }
+
+    callService() {
+        $.post("http://localhost:8080/acessoadadosWeb/NovoCOLService",
+            function (data) {
+                this.setState({ text: data });
+            }.bind(this));
+    }
+
+    render() {
+        return <div>Response - {this.state.text}</div>;
+    }  
+} **/
+
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -89,7 +111,7 @@ class Game extends React.Component {
         });
     }
 
-    jumpTo(step){
+    jumpTo(step) {
         console.log("jumped to :" + step);
         this.setState({
             stepNumber: step,
@@ -135,11 +157,57 @@ class Game extends React.Component {
     }
 }
 
-// ========================================
+class SusepAssociada extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        }
+    }
+    
+    loadSusepData() {
+        $.get("http://localhost:8080/susepsassociadas",
+            function (retorno) {
+                console.log("Chamou serviço suseps. Tamanho retorno: " + retorno["susepAssociada"].length);
+                this.setState({ data: retorno["susepAssociada"] });
+            }.bind(this));
+    }
 
+    componentDidMount() {
+        this.loadSusepData();
+    }
+
+    render() {
+        return (
+            <div>
+                <SusepList data={this.state.data} />
+            </div>)
+    }
+}
+
+class SusepList extends React.Component {
+    render() {
+        console.log("SusepList:" + this.props.data.length);
+        return (
+            <select className="SusepList">
+                {
+                    this.props.data.map(function (susep) {
+                        return <option key={susep.codigoSusep}>{susep.codigoSusep}</option>
+                    })
+                }
+            </select>
+        )
+    }
+}
+
+// ========================================
 ReactDOM.render(
     <Game />, document.getElementById('root')
 );
+ReactDOM.render(
+    <SusepAssociada />, document.getElementById('suseps')
+);
+
 
 function calculateWinner(squares) {
     const lines = [
